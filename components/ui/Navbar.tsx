@@ -1,121 +1,90 @@
 "use client";
-import React from "react";
-import { motion } from "motion/react";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
+import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
 
-const transition = {
-  type: "spring",
-  mass: 0.5,
-  damping: 11.5,
-  stiffness: 100,
-  restDelta: 0.001,
-  restSpeed: 0.001,
-};
+const navItems = [
+  { name: "Home", href: "#home" },
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Contact", href: "#contact" },
+];
 
-export const MenuItem = ({
-  setActive,
-  active,
-  item,
-  children,
-}: {
-  setActive: (item: string) => void;
-  active: string | null;
-  item: string;
-  children?: React.ReactNode;
-}) => {
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div onMouseEnter={() => setActive(item)} className="relative ">
-      <motion.p
-        transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
+    <>
+      {/* Top Navbar */}
+      <motion.nav
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="fixed top-0 left-0 w-full z-50 backdrop-blur-md shadow-md bg-black/80"
       >
-        {item}
-      </motion.p>
-      {active !== null && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85, y: 10 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={transition}
-        >
-          {active === item && (
-            <div className="absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 pt-4">
-              <motion.div
-                transition={transition}
-                layoutId="active" // layoutId ensures smooth animation
-                className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          {/* Logo */}
+          <Link href="#home" className="text-purple-400 text-2xl font-bold">
+            Portfolio
+          </Link>
+
+          {/* Desktop Menu */}
+          {/* <div className="hidden md:flex gap-6">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-gray-300 hover:text-purple-400 transition-all duration-300"
               >
-                <motion.div
-                  layout // layout ensures smooth animation
-                  className="w-max h-full p-4"
-                >
-                  {children}
-                </motion.div>
-              </motion.div>
+                {item.name}
+              </a>
+            ))}
+          </div> */}
+
+          {/* Mobile Hamburger */}
+          {/* <div className="md:hidden text-white">
+            <button onClick={() => setIsOpen(!isOpen)}>
+              {isOpen ? (
+                <HiOutlineX size={28} />
+              ) : (
+                <HiOutlineMenuAlt3 size={28} />
+              )}
+            </button>
+          </div> */}
+        </div>
+      </motion.nav>
+
+      {/* Mobile Sidebar */}
+      {/* <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed top-0 right-0 h-screen w-3/4 sm:w-1/2 bg-black z-50 flex flex-col items-start justify-start p-8 shadow-lg"
+          >
+            <div className="mb-8">
+              <button onClick={() => setIsOpen(false)} className="text-white">
+                <HiOutlineX size={28} />
+              </button>
             </div>
-          )}
-        </motion.div>
-      )}
-    </div>
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className="text-white text-xl mb-6 hover:text-purple-400 transition-all"
+              >
+                {item.name}
+              </a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence> */}
+    </>
   );
-};
-
-export const Menu = ({
-  setActive,
-  children,
-}: {
-  setActive: (item: string | null) => void;
-  children: React.ReactNode;
-}) => {
-  return (
-    <nav
-      onMouseLeave={() => setActive(null)} // resets the state
-      className="relative rounded-full border border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4 px-8 py-6 "
-    >
-      {children}
-    </nav>
-  );
-};
-
-export const ProductItem = ({
-  title,
-  description,
-  href,
-  src,
-}: {
-  title: string;
-  description: string;
-  href: string;
-  src: string;
-}) => {
-  return (
-    <Link href={href} className="flex space-x-2">
-      <Image
-        src={src}
-        width={140}
-        height={70}
-        alt={title}
-        className="shrink-0 rounded-md shadow-2xl"
-      />
-      <div>
-        <h4 className="text-xl font-bold mb-1 text-black dark:text-white">
-          {title}
-        </h4>
-        <p className="text-neutral-700 text-sm max-w-[10rem] dark:text-neutral-300">
-          {description}
-        </p>
-      </div>
-    </Link>
-  );
-};
-
-export const HoveredLink = ({ children, ...rest }: any) => {
-  return (
-    <Link
-      {...rest}
-      className="text-neutral-700 dark:text-neutral-200 hover:text-black "
-    >
-      {children}
-    </Link>
-  );
-};
+}

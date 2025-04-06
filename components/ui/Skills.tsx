@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import {
   FaReact, FaPython, FaRobot, FaCode,
@@ -5,6 +6,7 @@ import {
 import { SiNextdotjs, SiC } from 'react-icons/si';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { motion } from 'framer-motion';
 
 const coreSkills = [
   { name: 'React.js', icon: <FaReact />, percent: 92, color: '#10B981' },
@@ -24,16 +26,50 @@ const otherSkills = [
   'Data Analytics',
 ];
 
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
 const SkillSection = () => {
   return (
-    <section className=" text-white py-16 px-6 md:px-20">
-      <h2 className="text-purple-400 text-center uppercase tracking-wide text-sm mb-2">Skills</h2>
-      <h1 className="text-4xl font-bold text-center mb-10">Professional & Academic Skills</h1>
+    <motion.section
+      id="skills"
+      className="text-white py-16 px-6 md:px-20"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <motion.h2
+        className="text-purple-400 text-center uppercase tracking-wide text-sm mb-2"
+        variants={itemVariants}
+      >
+        Skills
+      </motion.h2>
 
-      {/* Circular Skills */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 justify-items-center">
+      <motion.h1
+        className="text-4xl font-bold text-center mb-10"
+        variants={itemVariants}
+      >
+        Professional & Academic Skills
+      </motion.h1>
+
+      {/* Animated Circular Skills */}
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 justify-items-center"
+        variants={containerVariants}
+      >
         {coreSkills.map((skill, index) => (
-          <div key={index} className="w-32 text-center">
+          <motion.div key={index} className="w-32 text-center" variants={itemVariants}>
             <CircularProgressbar
               value={skill.percent}
               text={`${skill.percent}%`}
@@ -47,25 +83,40 @@ const SkillSection = () => {
               <span className="text-lg">{skill.icon}</span>
               <span>{skill.name}</span>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      {/* Other Course Skills */}
-      <div className="mt-16">
-        <h3 className="text-xl font-semibold mb-6 text-center">Other Academic Skills</h3>
-        <div className="flex flex-wrap gap-4 justify-center">
+      {/* Animated Other Skills */}
+      <motion.div className="mt-16" variants={itemVariants}>
+        <motion.h3
+          className="text-xl font-semibold mb-6 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          Other Academic Skills
+        </motion.h3>
+        <motion.div
+          className="flex flex-wrap gap-4 justify-center"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={containerVariants}
+        >
           {otherSkills.map((skill, index) => (
-            <span
+            <motion.span
               key={index}
               className="bg-[#1f1f2e] border border-gray-700 hover:border-purple-500 px-4 py-2 rounded-full text-sm transition"
+              variants={itemVariants}
             >
               {skill}
-            </span>
+            </motion.span>
           ))}
-        </div>
-      </div>
-    </section>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 };
 
