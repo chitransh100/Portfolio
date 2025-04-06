@@ -26,11 +26,11 @@ export default function Aboutme() {
       <div className="w-24 h-1 mx-auto mb-8 rounded bg-purple-500" />
 
       <p className="text-lg leading-relaxed text-gray-300">
-        Hello! I'm Chitransh Kumar, a pre-final year Computer Science student at IIIT-Vadodara-ICD with hands-on experience in full-stack development, machine learning, and real-time systems. I'm passionate about creating tech that makes life easier — whether that's through intuitive web apps, AI-powered platforms, or smart backend systems.
+        Hello! I&#39;m Chitransh Kumar, a pre-final year Computer Science student at IIIT-Vadodara-ICD with hands-on experience in full-stack development, machine learning, and real-time systems. I&#39;m passionate about creating tech that makes life easier — whether that&#39;s through intuitive web apps, AI-powered platforms, or smart backend systems.
       </p>
 
       <p className="text-lg leading-relaxed text-gray-300 mt-4">
-        I've worked on several projects ranging from movie streaming platforms to developer networking sites, and I'm constantly exploring new technologies like GenAI and cloud infrastructure. I enjoy diving deep into systems, solving real-world problems, and building things that actually work and scale.
+      I&#39;ve worked on several projects ranging from movie streaming platforms to developer networking sites, and I&#39;m constantly exploring new technologies like GenAI and cloud infrastructure. I enjoy diving deep into systems, solving real-world problems, and building things that actually work and scale.
       </p>
 
       {/* Cards Section */}

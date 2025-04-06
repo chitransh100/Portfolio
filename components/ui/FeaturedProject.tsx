@@ -2,45 +2,46 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
+import Image from "next/image"; // at the top with other imports
+
 
 const categories = ["All Projects", "Web Development", "Machine Learning", "Research"];
 
 const projects = [
-    {
-      title: "CodeConnect",
-      description:
-        "A full-featured MERN stack social platform with real-time messaging using Socket.IO, JWT authentication, and a scalable microservices architecture. Optimized MongoDB queries reduced API latency by 65%.",
-      demo: "https://code-connect-lilac.vercel.app/",
-      code: "https://github.com/chitransh100/CodeConnect/tree/main/backend",
-      stack: ["MongoDB", "Express.js", "React", "Node.js", "Socket.IO", "JWT", "Tailwind CSS"],
-      category: "Web Development",
-      image: "/CodeConnect.jpg",
-    },
-    {
-      title: "StreamGPT (AI Movie Platform)",
-      description:
-        "A React-based streaming platform powered by TMDB and Gemini AI APIs, offering personalized content recommendations and seamless Firebase user authentication. Boosted user engagement by 35%.",
-      demo: "https://ai-mdb-qe6l.vercel.app/",
-      code: "https://github.com/chitransh100/StreamGPT",
-      stack: ["React", "Tailwind CSS", "Gemini AI API", "TMDB API", "Firebase"],
-      category: "Web Development",
-      image: "/streamgpt.jpg",
-    },
-    {
-      title: "MediaFlow",
-      description:
-        "A YouTube-inspired video platform with real-time chat, infinite nested comments, and centralized state management using Redux. Improved UI responsiveness and increased user retention by 27%.",
-      demo: "https://media-flow.vercel.app/",
-      code: "https://github.com/chitransh100/Media-Flow",
-      stack: ["React", "Redux", "Tailwind CSS", "Firebase", "React Router"],
-      category: "Web Development",
-      image: "/mediaflow.jpg",
-    },
-  ];
-  
-  
+  {
+    title: "CodeConnect",
+    description:
+      "A full-featured MERN stack social platform with real-time messaging using Socket.IO, JWT authentication, and a scalable microservices architecture. Optimized MongoDB queries reduced API latency by 65%.",
+    demo: "https://code-connect-lilac.vercel.app/",
+    code: "https://github.com/chitransh100/CodeConnect/tree/main/backend",
+    stack: ["MongoDB", "Express.js", "React", "Node.js", "Socket.IO", "JWT", "Tailwind CSS"],
+    category: "Web Development",
+    image: "/CodeConnect.jpg",
+  },
+  {
+    title: "StreamGPT (AI Movie Platform)",
+    description:
+      "A React-based streaming platform powered by TMDB and Gemini AI APIs, offering personalized content recommendations and seamless Firebase user authentication. Boosted user engagement by 35%.",
+    demo: "https://ai-mdb-qe6l.vercel.app/",
+    code: "https://github.com/chitransh100/StreamGPT",
+    stack: ["React", "Tailwind CSS", "Gemini AI API", "TMDB API", "Firebase"],
+    category: "Web Development",
+    image: "/streamgpt.jpg",
+  },
+  {
+    title: "MediaFlow",
+    description:
+      "A YouTube-inspired video platform with real-time chat, infinite nested comments, and centralized state management using Redux. Improved UI responsiveness and increased user retention by 27%.",
+    demo: "https://media-flow.vercel.app/",
+    code: "https://github.com/chitransh100/Media-Flow",
+    stack: ["React", "Redux", "Tailwind CSS", "Firebase", "React Router"],
+    category: "Web Development",
+    image: "/mediaflow.jpg",
+  },
+];
+
+
 
 export const FeaturedProjects = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -80,12 +81,12 @@ export const FeaturedProjects = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProjects.map((project, idx) => (
           <div
-          key={project.title}
-          className="relative group"
-          onMouseEnter={() => setHoveredIndex(idx)}
-          onMouseLeave={() => setHoveredIndex(null)}
-        >
-        
+            key={project.title}
+            className="relative group"
+            onMouseEnter={() => setHoveredIndex(idx)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+
             <AnimatePresence>
               {hoveredIndex === idx && (
                 <motion.span
@@ -98,45 +99,52 @@ export const FeaturedProjects = () => {
               )}
             </AnimatePresence>
             <Card>
-  <div className="aspect-video overflow-hidden rounded-xl bg-zinc-900">
-    <img src={project.image} alt={project.title} className="h-full w-full object-cover" />
-  </div>
-  <CardTitle>{project.title}</CardTitle>
-  <CardDescription>{project.description}</CardDescription>
-  <div className="flex flex-wrap gap-2 mt-4">
-    {project.stack.map((tech) => (
-      <span key={tech} className="text-xs bg-zinc-700 text-white px-2 py-1 rounded-full">
-        {tech}
-      </span>
-    ))}
-  </div>
-  <div className="flex gap-3 mt-6">
-    <a
-      href={project.demo}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="px-4 py-1.5 rounded-full bg-purple-600 text-white text-sm font-medium hover:bg-purple-700 transition"
-    >
-      🔗 Demo
-    </a>
-    <a
-      href={project.code}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="px-4 py-1.5 rounded-full bg-zinc-800 text-white text-sm font-medium flex items-center gap-2 hover:bg-zinc-700 transition"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-        className="w-4 h-4"
-      >
-        <path d="M12 0C5.37 0 0 5.373 0 12a12 12 0 0 0 8.208 11.418c.6.113.82-.263.82-.582v-2.18c-3.338.724-4.033-1.613-4.033-1.613-.546-1.388-1.334-1.756-1.334-1.756-1.09-.746.082-.73.082-.73 1.205.085 1.838 1.238 1.838 1.238 1.07 1.834 2.807 1.304 3.492.997.108-.775.42-1.305.762-1.605-2.665-.304-5.466-1.335-5.466-5.934 0-1.312.469-2.384 1.237-3.222-.124-.303-.536-1.524.117-3.176 0 0 1.009-.322 3.31 1.23a11.5 11.5 0 0 1 3.018-.406c1.024.004 2.055.138 3.018.406 2.3-1.552 3.307-1.23 3.307-1.23.655 1.653.243 2.874.12 3.176.77.838 1.236 1.91 1.236 3.222 0 4.61-2.804 5.628-5.476 5.924.432.372.816 1.104.816 2.226v3.293c0 .322.218.699.826.58A12.001 12.001 0 0 0 24 12c0-6.627-5.373-12-12-12z" />
-      </svg>
-      Code
-    </a>
-  </div>
-</Card>
+              <div className="aspect-video overflow-hidden rounded-xl bg-zinc-900">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  className="h-full w-full object-cover"
+                  width={500}
+                  height={300}
+                />
+
+              </div>
+              <CardTitle>{project.title}</CardTitle>
+              <CardDescription>{project.description}</CardDescription>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {project.stack.map((tech) => (
+                  <span key={tech} className="text-xs bg-zinc-700 text-white px-2 py-1 rounded-full">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className="flex gap-3 mt-6">
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-1.5 rounded-full bg-purple-600 text-white text-sm font-medium hover:bg-purple-700 transition"
+                >
+                  🔗 Demo
+                </a>
+                <a
+                  href={project.code}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-1.5 rounded-full bg-zinc-800 text-white text-sm font-medium flex items-center gap-2 hover:bg-zinc-700 transition"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    className="w-4 h-4"
+                  >
+                    <path d="M12 0C5.37 0 0 5.373 0 12a12 12 0 0 0 8.208 11.418c.6.113.82-.263.82-.582v-2.18c-3.338.724-4.033-1.613-4.033-1.613-.546-1.388-1.334-1.756-1.334-1.756-1.09-.746.082-.73.082-.73 1.205.085 1.838 1.238 1.838 1.238 1.07 1.834 2.807 1.304 3.492.997.108-.775.42-1.305.762-1.605-2.665-.304-5.466-1.335-5.466-5.934 0-1.312.469-2.384 1.237-3.222-.124-.303-.536-1.524.117-3.176 0 0 1.009-.322 3.31 1.23a11.5 11.5 0 0 1 3.018-.406c1.024.004 2.055.138 3.018.406 2.3-1.552 3.307-1.23 3.307-1.23.655 1.653.243 2.874.12 3.176.77.838 1.236 1.91 1.236 3.222 0 4.61-2.804 5.628-5.476 5.924.432.372.816 1.104.816 2.226v3.293c0 .322.218.699.826.58A12.001 12.001 0 0 0 24 12c0-6.627-5.373-12-12-12z" />
+                  </svg>
+                  Code
+                </a>
+              </div>
+            </Card>
 
           </div>
         ))}

@@ -1,20 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
 
-const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
-];
+
+// const navItems = [
+//   { name: "Home", href: "#home" },
+//   { name: "About", href: "#about" },
+//   { name: "Skills", href: "#skills" },
+//   { name: "Projects", href: "#projects" },
+//   { name: "Contact", href: "#contact" },
+// ];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
