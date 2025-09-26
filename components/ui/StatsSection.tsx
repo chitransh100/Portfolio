@@ -6,9 +6,9 @@ import { useEffect } from "react";
 
 const stats = [
   // { label: "Years of Experience", value: "2+" },
-  { label: "Projects Completed", value: "5" },
-  { label: "Technologies Mastered", value: "10+" },
-  { label: "Code Commits", value: "100+" },
+  { label: "Projects Completed", value: "4" },
+  { label: "Technologies Mastered", value: "15+" },
+  { label: "Code Commits", value: "150+" },
 ];
 
 export default function StatsSection() {

@@ -10,6 +10,15 @@ const categories = ["All Projects", "Web Development", "Machine Learning", "Rese
 
 const projects = [
   {
+    title: "Neuro Drive",
+    description: "A self-driving car simulation built from scratch with pure JavaScript, implementing custom neural networks for autonomous navigation. Features vehicle dynamics, collision detection, and machine learning algorithms without external libraries.",
+    demo: "https://neuro-drive-mu.vercel.app/",
+    code: "https://github.com/chitransh100/NeuroDrive",
+    stack: ["JavaScript", "HTML5", "CSS3", "Neural Networks", "Machine Learning", "Mathematics"],
+    category: "AI & Simulation",
+    image: "/neuro-drive.png",
+  },
+  {
     title: "CodeConnect",
     description:
       "A full-featured MERN stack social platform with real-time messaging using Socket.IO, JWT authentication, and a scalable microservices architecture. Optimized MongoDB queries reduced API latency by 65%.",
@@ -86,7 +95,6 @@ export const FeaturedProjects = () => {
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-
             <AnimatePresence>
               {hoveredIndex === idx && (
                 <motion.span
@@ -98,8 +106,10 @@ export const FeaturedProjects = () => {
                 />
               )}
             </AnimatePresence>
-            <Card>
-              <div className="aspect-video overflow-hidden rounded-xl bg-zinc-900">
+
+            <Card className="flex flex-col h-full p-6 gap-4">
+              {/* Image */}
+              <div className="aspect-video overflow-hidden rounded-xl bg-zinc-900 flex-shrink-0">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -107,23 +117,33 @@ export const FeaturedProjects = () => {
                   width={500}
                   height={300}
                 />
+              </div>
 
+              {/* Content */}
+              <div className="flex-1 flex flex-col gap-4">
+                <CardTitle>{project.title}</CardTitle>
+                <CardDescription>{project.description}</CardDescription>
+
+                {/* Tech stack */}
+                <div className="flex flex-wrap gap-2">
+                  {project.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-xs bg-zinc-700 text-white px-2 py-1 rounded-full"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <CardTitle>{project.title}</CardTitle>
-              <CardDescription>{project.description}</CardDescription>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {project.stack.map((tech) => (
-                  <span key={tech} className="text-xs bg-zinc-700 text-white px-2 py-1 rounded-full">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <div className="flex gap-3 mt-6">
+
+              {/* Buttons */}
+              <div className="flex gap-3 mt-4">
                 <a
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-1.5 rounded-full bg-purple-600 text-white text-sm font-medium hover:bg-purple-700 transition"
+                  className="px-4 py-2 rounded-full bg-purple-600 text-white text-sm font-medium hover:bg-purple-700 transition"
                 >
                   🔗 Demo
                 </a>
@@ -131,7 +151,7 @@ export const FeaturedProjects = () => {
                   href={project.code}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-1.5 rounded-full bg-zinc-800 text-white text-sm font-medium flex items-center gap-2 hover:bg-zinc-700 transition"
+                  className="px-4 py-2 rounded-full bg-zinc-800 text-white text-sm font-medium flex items-center gap-2 hover:bg-zinc-700 transition"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -149,6 +169,7 @@ export const FeaturedProjects = () => {
           </div>
         ))}
       </div>
+
     </section>
   );
 };

@@ -30,48 +30,50 @@ export default function Aboutme() {
       </p>
 
       <p className="text-lg leading-relaxed text-gray-300 mt-4">
-      I&#39;ve worked on several projects ranging from movie streaming platforms to developer networking sites, and I&#39;m constantly exploring new technologies like GenAI and cloud infrastructure. I enjoy diving deep into systems, solving real-world problems, and building things that actually work and scale.
+        I&#39;ve worked on several projects ranging from movie streaming platforms to developer networking sites, and I&#39;m constantly exploring new technologies like GenAI and cloud infrastructure. I enjoy diving deep into systems, solving real-world problems, and building things that actually work and scale.
       </p>
 
       {/* Cards Section */}
       {/* Cards Section */}
-<div className="grid grid-cols md:grid-cols-2 gap-6 mt-12 z-10 relative">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 z-10 relative items-stretch">
   {/* Card 1 - Web Dev */}
-  <BackgroundGradient className="rounded-2xl overflow-hidden">
-    <div className="bg-[#14142b] p-6 rounded-2xl shadow-lg border border-purple-600 text-center">
+  <BackgroundGradient className="rounded-2xl overflow-hidden flex flex-col h-full">
+    <div className="bg-[#14142b] p-6 flex flex-col h-full text-center">
       <div className="text-3xl mb-4">🛠️</div>
       <h3 className="text-xl font-semibold">Web Development</h3>
       <p className="text-sm text-purple-400 mt-1">Full-Stack | Learning by Building</p>
-      <p className="text-gray-400 mt-2 text-sm">
+      <p className="text-gray-400 mt-2 text-sm flex-1">
         Comfortable with React, Tailwind, Firebase and building personal projects to strengthen skills.
       </p>
     </div>
   </BackgroundGradient>
 
   {/* Card 2 - Research Work */}
-  <BackgroundGradient className="rounded-2xl">
-    <div className="bg-[#14142b] p-6 rounded-2xl shadow-lg border border-purple-600 text-center">
+  <BackgroundGradient className="rounded-2xl overflow-hidden flex flex-col h-full">
+    <div className="bg-[#14142b] p-6 flex flex-col h-full text-center">
       <div className="text-3xl mb-4">📊</div>
       <h3 className="text-xl font-semibold">Research: Weather Forecasting</h3>
       <p className="text-sm text-purple-400 mt-1">Ongoing | 2025</p>
-      <p className="text-gray-400 mt-2 text-sm">
+      <p className="text-gray-400 mt-2 text-sm flex-1">
         Working on a comparative study of ANN, RNN, LSTM, and TCN for weather prediction and anomaly detection.
       </p>
     </div>
   </BackgroundGradient>
 
-  {/* Card 3 - Exploring ML & GenAI
-  <BackgroundGradient className="rounded-2xl">
-    <div className="bg-[#14142b] p-6 rounded-2xl shadow-lg border border-purple-600 text-center w-full">
+  {/* Card 3 (optional) */}
+  {/* <BackgroundGradient className="rounded-2xl overflow-hidden flex flex-col h-full">
+    <div className="bg-[#14142b] p-6 flex flex-col h-full text-center">
       <div className="text-3xl mb-4">🤖</div>
       <h3 className="text-xl font-semibold">Learning ML & GenAI</h3>
       <p className="text-sm text-purple-400 mt-1">Curious Explorer</p>
-      <p className="text-gray-400 mt-2 text-sm">
+      <p className="text-gray-400 mt-2 text-sm flex-1">
         Exploring core ML concepts, training models, and understanding real-world applications in AI and Generative AI.
       </p>
     </div>
   </BackgroundGradient> */}
 </div>
+
+
 
     </motion.section>
   );
