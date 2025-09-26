@@ -77,7 +77,7 @@ export default function Home() {
                 transition={{ duration: 0.3, delay: 1 }}
                 className="mt-8 flex flex-col md:flex-row items-center justify-center md:justify-start gap-4"
               >
-                <Link href="https://drive.google.com/file/d/14_43aT-mzNqemYh1IYom0ADudWzld_gC/view?usp=drive_link" download>
+                <Link href="https://drive.google.com/file/d/1A62UGL0cvmgjSpGUWRAcQFMYbh6-mGXc/view?usp=drive_link" download>
                   <button className="flex items-center justify-center gap-2 w-48 rounded-lg bg-black px-6 py-2 font-medium text-white hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-all duration-300">
                     <FaDownload /> Resume
                   </button>
